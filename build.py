@@ -7,6 +7,8 @@ from translations import L
 
 ISSUES = '<a href="https://github.com/whlan02/blueee/issues">github.com/whlan02/blueee/issues</a>'
 EN = L['en']
+import hashlib
+VERSION = hashlib.md5(json.dumps(L, sort_keys=True).encode()).hexdigest()[:8]  # 文案变了地址就变，浏览器不会用旧缓存
 RTL = ['ar', 'ur', 'fa', 'he']
 
 
@@ -35,7 +37,7 @@ def page(filename, title_key, body):
             f'<meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<title>{EN[title_key]} – Blueee</title><link rel="icon" href="icon.png"><style>{CSS}</style></head>'
             f'<body><main>{HEADER}{body}<footer data-i18n="foot">{EN["foot"]}</footer></main>'
-            f'<script src="i18n.js"></script></body></html>')
+            f'<script src="i18n.js?v={VERSION}"></script></body></html>')
     pathlib.Path(filename).write_text(html, encoding='utf-8')
 
 
