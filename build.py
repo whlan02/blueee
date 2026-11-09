@@ -8,7 +8,6 @@ from translations import L
 ISSUES = '<a href="https://github.com/whlan02/blueee/issues">github.com/whlan02/blueee/issues</a>'
 EN = L['en']
 import hashlib
-VERSION = hashlib.md5(json.dumps(L, sort_keys=True).encode()).hexdigest()[:8]  # 文案变了地址就变，浏览器不会用旧缓存
 RTL = ['ar', 'ur', 'fa', 'he']
 
 
@@ -53,24 +52,6 @@ def page(filename, title_key, body):
 def card(*parts):
     return '<div class="card">' + ''.join(parts) + '</div>'
 
-
-page('index.html', 'nav.home',
-     '<img class="icon" src="icon.png" alt="Blueee"><h1>Blueee</h1>' + el('p', 'home.tag')
-     + card(el('h2', 'home.h'), '<ul>' + ''.join(el('li', f'home.l{i}') for i in range(1, 5)) + '</ul>'))
-
-page('privacy.html', 'priv.title',
-     el('h1', 'priv.title') + card(
-         el('h2', 'priv.h1'), el('p', 'priv.p1'), el('h2', 'priv.h2'),
-         '<ul>' + ''.join(el('li', k) for k in ('priv.loc', 'priv.ble', 'priv.cam', 'priv.mot')) + '</ul>',
-         *[el(t, f'priv.{k}') for k in ('h3', 'p3', 'h4', 'p4', 'h5', 'p5') for t in ['h2' if k[0] == 'h' else 'p']]))
-
-page('terms.html', 'terms.title',
-     el('h1', 'terms.title') + card(*[el('h2', f'terms.h{i}') + el('p', f'terms.p{i}') for i in range(1, 6)]))
-
-page('support.html', 'sup.title',
-     el('h1', 'sup.title') + card(
-         el('h2', 'sup.h1'), el('p', 'sup.p1'), el('h2', 'sup.h2'),
-         *[f'<p><b data-i18n="sup.q{i}">{EN[f"sup.q{i}"]}</b><br>{el("span", f"sup.a{i}")}</p>' for i in (1, 2, 3)]))
 
 translations = {code: {k: fill(v) for k, v in data.items()} for code, data in L.items()}
 script = 'var T=' + json.dumps(translations, ensure_ascii=False) + ';\nvar RTL=' + json.dumps(RTL) + ''';
@@ -118,4 +99,24 @@ script = 'var T=' + json.dumps(translations, ensure_ascii=False) + ';\nvar RTL='
 })();
 '''
 pathlib.Path('i18n.js').write_text(script, encoding='utf-8')
+VERSION = hashlib.md5(script.encode()).hexdigest()[:8]  # 脚本或文案任何变化，地址就变，浏览器不会用旧缓存
+
+page('index.html', 'nav.home',
+     '<img class="icon" src="icon.png" alt="Blueee"><h1>Blueee</h1>' + el('p', 'home.tag')
+     + card(el('h2', 'home.h'), '<ul>' + ''.join(el('li', f'home.l{i}') for i in range(1, 5)) + '</ul>'))
+
+page('privacy.html', 'priv.title',
+     el('h1', 'priv.title') + card(
+         el('h2', 'priv.h1'), el('p', 'priv.p1'), el('h2', 'priv.h2'),
+         '<ul>' + ''.join(el('li', k) for k in ('priv.loc', 'priv.ble', 'priv.cam', 'priv.mot')) + '</ul>',
+         *[el(t, f'priv.{k}') for k in ('h3', 'p3', 'h4', 'p4', 'h5', 'p5') for t in ['h2' if k[0] == 'h' else 'p']]))
+
+page('terms.html', 'terms.title',
+     el('h1', 'terms.title') + card(*[el('h2', f'terms.h{i}') + el('p', f'terms.p{i}') for i in range(1, 6)]))
+
+page('support.html', 'sup.title',
+     el('h1', 'sup.title') + card(
+         el('h2', 'sup.h1'), el('p', 'sup.p1'), el('h2', 'sup.h2'),
+         *[f'<p><b data-i18n="sup.q{i}">{EN[f"sup.q{i}"]}</b><br>{el("span", f"sup.a{i}")}</p>' for i in (1, 2, 3)]))
+
 print(len(L), 'languages:', ', '.join(L))
