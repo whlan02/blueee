@@ -19,16 +19,16 @@ def el(tag, key):
     return f'<{tag} data-i18n="{key}">{fill(EN[key])}</{tag}>'
 
 
-CSS = '''*{box-sizing:border-box}body{margin:0;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;color:#114163;background:linear-gradient(160deg,#e3e3fe,#c7dcf8) fixed;min-height:100vh}
+CSS = '''*{box-sizing:border-box}body{margin:0;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;color:#114163;background:#fff;min-height:100vh}
 main{max-width:720px;margin:0 auto;padding:40px 20px 80px}header{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:32px;font-size:15px}
 header .sp{flex:1}header{position:relative}.lang{position:relative}
-#langBtn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15px;color:#114163;background:rgba(255,255,255,.55);border:1px solid rgba(17,65,99,.14);border-radius:999px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:background .15s}
-#langBtn:hover,#langBtn[aria-expanded=true]{background:rgba(255,255,255,.85)}#langBtn svg:last-child{opacity:.6;transition:transform .15s}#langBtn[aria-expanded=true] svg:last-child{transform:rotate(180deg)}
-#langPanel{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:10;width:min(680px,calc(100vw - 40px));max-height:calc(100vh - 110px);overflow:auto;scrollbar-width:thin;scrollbar-color:rgba(17,65,99,.28) transparent;padding:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px;background:rgba(255,255,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(17,65,99,.1);border-radius:22px;box-shadow:0 16px 48px rgba(17,65,99,.22)}
+#langBtn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15px;color:#114163;background:#fff;border:1px solid rgba(17,65,99,.18);border-radius:999px;padding:8px 14px;cursor:pointer;transition:background .15s}
+#langBtn:hover,#langBtn[aria-expanded=true]{background:#f5f8fd}#langBtn svg:last-child{opacity:.6;transition:transform .15s}#langBtn[aria-expanded=true] svg:last-child{transform:rotate(180deg)}
+#langPanel{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:10;width:min(680px,calc(100vw - 40px));max-height:calc(100vh - 110px);overflow:auto;scrollbar-width:thin;scrollbar-color:rgba(17,65,99,.28) transparent;padding:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px;background:#fff;border:1px solid rgba(17,65,99,.12);border-radius:22px;box-shadow:0 16px 40px rgba(17,65,99,.14)}
 #langPanel::-webkit-scrollbar{width:8px}#langPanel::-webkit-scrollbar-track{background:transparent;margin:14px 0}#langPanel::-webkit-scrollbar-thumb{background:rgba(17,65,99,.28);border-radius:999px;border:2px solid transparent;background-clip:padding-box}#langPanel[hidden]{display:none}#langPanel button{font:inherit;font-size:15px;color:#114163;text-align:start;background:none;border:0;border-radius:12px;padding:9px 12px;cursor:pointer}
-#langPanel button:hover{background:rgba(17,65,99,.08)}#langPanel button[aria-current=true]{background:#114163;color:#fff}#langBtn:focus-visible,#langPanel button:focus-visible{outline:2px solid #114163;outline-offset:2px}
-a{color:#114163}h1{font-size:34px;margin:0 0 4px}h2{font-size:20px;margin-top:28px}.card{background:rgba(255,255,255,.7);border-radius:22px;padding:8px 24px 24px;margin-top:20px}
-img.icon{width:96px;height:96px;border-radius:22px;box-shadow:0 8px 24px rgba(17,65,99,.25)}footer{margin-top:40px;font-size:13px;opacity:.65}[dir=rtl] ul{padding-right:1.4em;padding-left:0}'''
+#langPanel button:hover{background:#f0f4fa}#langPanel button[aria-current=true]{background:#114163;color:#fff}#langBtn:focus-visible,#langPanel button:focus-visible{outline:2px solid #114163;outline-offset:2px}
+a{color:#114163}h1{font-size:34px;margin:0 0 4px}h2{font-size:20px;margin-top:28px}.card{background:#f5f8fd;border:1px solid rgba(17,65,99,.08);border-radius:22px;padding:8px 24px 24px;margin-top:20px}
+img.icon{width:96px;height:96px;border-radius:22px;box-shadow:0 6px 20px rgba(17,65,99,.16)}footer{margin-top:40px;font-size:13px;opacity:.65}[dir=rtl] ul{padding-right:1.4em;padding-left:0}'''
 
 GLOBE = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
          'stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>')
