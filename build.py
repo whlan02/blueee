@@ -7,7 +7,7 @@ from translations import L
 
 ISSUES = '<a href="https://github.com/whlan02/blueee/issues">github.com/whlan02/blueee/issues</a>'
 EN = L['en']
-RTL = ['ar', 'ur']
+RTL = ['ar', 'ur', 'fa', 'he']
 
 
 def fill(s):

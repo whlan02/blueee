@@ -274,3 +274,10 @@ L['ur'] = {
  'sup.q2':'کیا میرا ڈیٹا اپ لوڈ ہوتا ہے؟','sup.a2':'نہیں۔ سب کچھ آپ کے iPhone پر رہتا ہے۔ دیکھیں {privacy}۔',
  'sup.q3':'پس منظر میں آلہ شناخت نہیں ہو رہا۔','sup.a3':'یقینی بنائیں کہ بلوٹوتھ آن ہے، بیک گراؤنڈ ایپ ریفریش کی اجازت ہے، اور ایپ کو ایپ سوئچر سے زبردستی بند نہیں کیا گیا۔',
  'foot':'© 2026 Blueee · آخری اپڈیٹ: 2026-11-09','privacyLink':'رازداری کی پالیسی'}
+
+from translations_a import A
+from translations_b import B
+from translations_c import C
+from translations_d import D
+for _extra in (A, B, C, D):
+    L.update(_extra)
